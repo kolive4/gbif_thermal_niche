@@ -1,0 +1,19 @@
+Package: gbifniche
+Title: Evaluate GBIF Environmental Niches
+Description: R tool for assessing uncertainties around qualities of observation for environmental niches using GBIF data.
+URL: https://github.com/kolive4/gbif_thermal_niche
+Version: 0.1
+Depends:
+  R (>= 4.0)
+Imports:
+  rlang,
+  dplyr,
+  readr,
+  ggplot2,
+  rgbif,
+  rappdirs
+Maintainer: Kyle Shehata Oliveira <kyle.oliveira@maine.edu>
+Author: Kyle Shehata Oliveira <kyle.oliveira@maine.edu>
+License: MIT + file LICENSE
+Encoding: UTF-8
+RoxygenNote: 7.1.1
