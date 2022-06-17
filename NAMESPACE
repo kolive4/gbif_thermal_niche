@@ -2,6 +2,12 @@
 
 export(fetch_gbif)
 export(get_path)
+export(list_gbif)
+export(plot_gbif)
 export(read_gbif)
-importFrom(dplyr,"%>%")
+export(rename_gbif)
+export(template_dwc)
+importFrom(rlang,"!!!")
+importFrom(rlang,"!!")
+importFrom(rlang,":=")
 importFrom(rlang,.data)

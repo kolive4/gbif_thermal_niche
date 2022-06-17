@@ -7,12 +7,12 @@
 get_path(..., root = rappdirs::user_data_dir("gbif_niche"))
 }
 \arguments{
-\item{...}{charcater, one or more file path segments to be post-pended to \code{root}}
+\item{...}{character, one or more file path segments to be post-pended to \code{root}}
 
 \item{root}{character, the root data directory path}
 }
 \value{
-charcater path specification
+character path specification
 }
 \description{
 Retrieve a data path
