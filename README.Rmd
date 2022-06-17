@@ -1,0 +1,40 @@
+---
+title: "gbifniche"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+R tool for assessing uncertainties around qualities of observation for environmental niches using GBIF data
+
+
+## Requirements
+
++ [R v4.1](https://www.r-project.org/)
++ [rlang](https://CRAN.R-project.org/package=rlang)
++ [dplyr](https://CRAN.R-project.org/package=dplyr)
++ [readr](https://CRAN.R-project.org/package=readr)
++ [ggplot2](https://CRAN.R-project.org/package=ggplot2)
++ [rgbif](https://CRAN.R-project.org/package=rgbif)
++ [rappdirs](https://CRAN.R-project.org/package=rappdirs)
+
+## Installation
+
+```
+remotes::install_github("kolive4/gbif_thermal_niche")
+```
+
+## Usage
+
+Retrieve a data set by species.
+
+```{r}
+library(gbifniche)
+# make it quiet for the purpose of the README markdown
+x = fetch_gbif(species = "Squalus acanthias subsp. acanthias Linnaeus, 1758", 
+               verbose = FALSE, progress = FALSE) |>
+  dplyr::glimpse()
+```
