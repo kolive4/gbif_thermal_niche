@@ -2,18 +2,27 @@
 % Please edit documentation in R/io.R
 \name{fetch_gbif}
 \alias{fetch_gbif}
-\title{fetch occurrence data for given species from GBIF}
+\title{Fetch occurrence data for given species from GBIF}
 \usage{
-fetch_gbif(species = "Carcharodon carcharias", cache = TRUE)
+fetch_gbif(
+  species = "Carcharodon carcharias",
+  cache = TRUE,
+  verbose = FALSE,
+  progress = !verbose
+)
 }
 \arguments{
 \item{species}{character, latin name of species to fetch}
 
 \item{cache}{logical, if true save results to cache}
+
+\item{verbose}{logical, if true prints counter of progress}
+
+\item{progress}{logical, if true print progress bar and ignore verbose}
 }
 \value{
 data frame in the form of a tibble
 }
 \description{
-fetch occurrence data for given species from GBIF
+Fetch occurrence data for given species from GBIF
 }
