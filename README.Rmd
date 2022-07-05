@@ -39,9 +39,9 @@ suppressPackageStartupMessages({
 })
 
 # make it quiet for the purpose of the README markdown
-x = fetch_gbif(species = "Squalus acanthias subsp. acanthias Linnaeus, 1758", 
-               verbose = FALSE, progress = FALSE) |>
-  dplyr::glimpse()
+# x = fetch_gbif(species = "Carcharodon carcharias", 
+#                verbose = FALSE, progress = FALSE) |>
+#   dplyr::glimpse()
 ```
 
 If you have downloaded multiple datasets you can list the ones you have.
@@ -53,7 +53,7 @@ If you have downloaded multiple datasets you can list the ones you have.
 Now that you have a set of data files you can read them, optionally with a select number of [GBIF Darwin Core](https://ipt.gbif.org/manual/en/ipt/2.5/occurrence-data) required and recommended fields.
 
 ```{r}
-x <- read_gbif(spp[3], dwc = TRUE)
+x <- read_gbif(spp[1], dwc = TRUE)
 glimpse(x)
 ```
 
