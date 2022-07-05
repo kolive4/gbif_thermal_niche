@@ -4,7 +4,7 @@
 \alias{read_gbif}
 \title{function to read gbif with the option to fetch}
 \usage{
-read_gbif(species = "Carcharodon carcharias", refresh = FALSE)
+read_gbif(species = "Carcharodon carcharias", refresh = FALSE, dwc = TRUE)
 }
 \arguments{
 \item{species}{character, latin name of species}

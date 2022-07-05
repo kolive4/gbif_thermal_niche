@@ -1,0 +1,64 @@
+---
+title: "gbifniche"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+R tool for assessing uncertainties around qualities of observation for environmental niches using GBIF data
+
+
+## Requirements
+
++ [R v4.1](https://www.r-project.org/)
++ [rlang](https://CRAN.R-project.org/package=rlang)
++ [dplyr](https://CRAN.R-project.org/package=dplyr)
++ [readr](https://CRAN.R-project.org/package=readr)
++ [ggplot2](https://CRAN.R-project.org/package=ggplot2)
++ [rgbif](https://CRAN.R-project.org/package=rgbif)
++ [rappdirs](https://CRAN.R-project.org/package=rappdirs)
++ [mapr](https://CRAN.R-project.org/package=mapr)
+
+## Installation
+
+```
+remotes::install_github("kolive4/gbif_thermal_niche")
+```
+
+## Usage
+
+Retrieve a data set by species.
+
+```{r}
+suppressPackageStartupMessages({
+  library(gbifniche)
+  library(dplyr)
+})
+
+# make it quiet for the purpose of the README markdown
+x = fetch_gbif(species = "Squalus acanthias subsp. acanthias Linnaeus, 1758", 
+               verbose = FALSE, progress = FALSE) |>
+  dplyr::glimpse()
+```
+
+If you have downloaded multiple datasets you can list the ones you have.
+
+```{r}
+(spp <- list_gbif())
+```
+
+Now that you have a set of data files you can read them, optionally with a select number of [GBIF Darwin Core](https://ipt.gbif.org/manual/en/ipt/2.5/occurrence-data) required and recommended fields.
+
+```{r}
+x <- read_gbif(spp[3], dwc = TRUE)
+glimpse(x)
+```
+
+And plot...
+
+```{r}
+plot_gbif(x, what = 'ggplot')
+```

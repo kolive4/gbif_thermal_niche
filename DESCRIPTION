@@ -11,9 +11,10 @@ Imports:
   readr,
   ggplot2,
   rgbif,
-  rappdirs
+  rappdirs,
+  mapr
 Maintainer: Kyle Shehata Oliveira <kyle.oliveira@maine.edu>
 Author: Kyle Shehata Oliveira <kyle.oliveira@maine.edu>
 License: MIT + file LICENSE
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
