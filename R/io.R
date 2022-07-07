@@ -135,7 +135,9 @@ read_gbif = function(species = "Carcharodon carcharias",
     x = fetch_gbif(species = species)
   }
   else{
-    x <- readr::read_csv(filename, show_col_types = FALSE)
+    x <- #readr::read_csv(filename, show_col_types = FALSE)
+      tidytable::fread.(filename) |>
+      dplyr::as_tibble()
   }
   if (dwc) x <- as_dwc(x)
   return(x)

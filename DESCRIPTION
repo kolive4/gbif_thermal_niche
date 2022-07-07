@@ -9,6 +9,7 @@ Imports:
   rlang,
   dplyr,
   readr,
+  tidytable,
   ggplot2,
   rgbif,
   rappdirs,
