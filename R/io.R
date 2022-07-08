@@ -126,6 +126,7 @@ fetch_gbif = function(species = "Carcharodon carcharias",
 #' @export
 #' @param species character, latin name of species
 #' @param refresh logical, if true fetch fresh set of data
+#' @return dwc logical, if TRUE trim to the recommended Darwin Core content
 #' @return data frame in the form of a tibble
 read_gbif = function(species = "Carcharodon carcharias", 
                      refresh = FALSE,
@@ -199,13 +200,21 @@ template_dwc <- function(what = c("required", "recommended"), n = 0) {
 #' @return tibble with defined columns
 as_dwc <- function(x, template = template_dwc(n=1)){
   
+  as_date <- function(x, format = "%Y-%m-%d %H:%M:%S"){
+    
+  }
+  
   tnames <- colnames(template)
   tclass <- sapply(template, class)
   y <- dplyr::select(x, dplyr::any_of(tnames))
   ynames <- colnames(y)
   for (nm in tnames){
     if (nm %in% ynames){
-      class(y[[nm]]) <- tclass[[nm]]
+      if (tclass[[nm]] == "Date"){
+        y <- dplyr::mutate(y, {{ nm }} := as.Date(.data[[nm]])) 
+      } else {
+        class(y[[nm]]) <- tclass[[nm]]
+      }
     } else {
       y <- dplyr::mutate(y, !!nm := template[[nm]])
     }

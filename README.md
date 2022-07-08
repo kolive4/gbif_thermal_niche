@@ -14,6 +14,7 @@ environmental niches using GBIF data
 -   [rgbif](https://CRAN.R-project.org/package=rgbif)
 -   [rappdirs](https://CRAN.R-project.org/package=rappdirs)
 -   [mapr](https://CRAN.R-project.org/package=mapr)
+-   [tidytable](https://CRAN.R-project.org/package=tidytable)
 
 ## Installation
 
@@ -41,7 +42,9 @@ If you have downloaded multiple datasets you can list the ones you have.
 (spp <- list_gbif())
 ```
 
-    ## [1] "Carcharodon carcharias" "Menidia menidia"
+    ## [1] "Carcharodon carcharias"                           
+    ## [2] "Prionace glauca"                                  
+    ## [3] "Squalus acanthias subsp. acanthias Linnaeus, 1758"
 
 Now that you have a set of data files you can read them, optionally with
 a select number of [GBIF Darwin
@@ -50,20 +53,15 @@ and recommended fields.
 
 ``` r
 x <- read_gbif(spp[1], dwc = TRUE)
-```
-
-    ## Warning: One or more parsing issues, see `problems()` for details
-
-``` r
 glimpse(x)
 ```
 
-    ## Rows: 14,995
+    ## Rows: 14,999
     ## Columns: 13
     ## $ occurrenceID         <chr> "https://www.inaturalist.org/observations/1046725…
     ## $ basisOfRecord        <chr> "HUMAN_OBSERVATION", "HUMAN_OBSERVATION", "HUMAN_…
     ## $ scientificName       <chr> "Carcharodon carcharias (Linnaeus, 1758)", "Carch…
-    ## $ eventDate            <date> 4496496-10-14, 4495335-05-15, 4495571-12-04, 449…
+    ## $ eventDate            <date> 2022-01-07, 2022-01-03, 2022-01-04, 2022-01-20, …
     ## $ taxonRank            <chr> "SPECIES", "SPECIES", "SPECIES", "SPECIES", "SPEC…
     ## $ kingdom              <chr> "Animalia", "Animalia", "Animalia", "Animalia", "…
     ## $ decimalLatitude      <dbl> 32.88271, -39.15443, -36.59722, -36.09550, -35.12…

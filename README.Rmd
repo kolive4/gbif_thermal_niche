@@ -21,6 +21,7 @@ R tool for assessing uncertainties around qualities of observation for environme
 + [rgbif](https://CRAN.R-project.org/package=rgbif)
 + [rappdirs](https://CRAN.R-project.org/package=rappdirs)
 + [mapr](https://CRAN.R-project.org/package=mapr)
++ [tidytable](https://CRAN.R-project.org/package=tidytable)
 
 ## Installation
 

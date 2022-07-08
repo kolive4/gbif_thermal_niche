@@ -4,6 +4,7 @@
 #'
 #' @docType package
 #' @importFrom rlang .data !!! !! :=
+#' @importFrom utils  setTxtProgressBar txtProgressBar
 #' @name gbifniche
 #' @aliases gbifniche
 NULL
