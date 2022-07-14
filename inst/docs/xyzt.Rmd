@@ -1,0 +1,62 @@
+---
+title: "gbif and xyzt"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### Load up the tools
+
+```{r}
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(gbifniche)
+  library(xyzt)
+  library(ghrsst)
+  library(ncdf4)
+})
+```
+
+### Gather the observation data
+
+```{r}
+(spp <- list_gbif())
+x <- read_gbif(spp[1]) |>
+  dplyr::filter(dplyr::between(eventDate, 
+                               as.Date("2002-06-01"), 
+                               as.Date("2002-12-31"))) |>
+  dplyr::group_by(eventDate) |>
+  dplyr::rename(lat = "decimalLatitude",
+                lon = "decimalLongitude") |>
+  dplyr::filter(!is.na(lat) & !is.na(lon))
+glimpse(x)
+```
+
+
+### Go collect GHRSST data
+
+```{r}
+mur <- xyzt::as_POINT(x) |>
+  dplyr:::group_map(
+    function(subx, key){                                  # an anonymous function
+      on.exit(ncdf4::nc_close(X))                         # last thing is clean up
+      url <- ghrsst::mur_url(key$eventDate)               # get a URL for this date
+      X <- ncdf4::nc_open(url)                            # open the resource
+      ghrsst::extract(subx, X, varname = c("analysed_sst", "mask")) # get and return the goods
+    },
+    .keep = TRUE) |>
+  dplyr::bind_rows()
+glimpse(mur)
+```
+
+
+### Join with original data
+
+```{r}
+(x <- dplyr::bind_cols(x, mur))
+```
+
+

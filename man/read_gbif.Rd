@@ -12,6 +12,8 @@ read_gbif(species = "Carcharodon carcharias", refresh = FALSE, dwc = TRUE)
 \item{refresh}{logical, if true fetch fresh set of data}
 }
 \value{
+dwc logical, if TRUE trim to the recommended Darwin Core content
+
 data frame in the form of a tibble
 }
 \description{
